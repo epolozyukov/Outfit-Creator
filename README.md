@@ -1,36 +1,32 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Outfit Creator (workshop concept)
 
-## Getting Started
+Pick an activity, weather and style and get a complete sportswear outfit from a
+local mock catalogue. Replace single items, generate another look, see the total.
 
-First, run the development server:
+> Workshop concept – not an official Adidas product. Product names, prices and
+> images are illustrative placeholders.
+
+## Run
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev        # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Quality gates
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm test               # unit + component tests (Vitest)
+npm run test:coverage  # with coverage thresholds (src/lib 100%)
+npm run test:e2e       # Playwright against the production build
+npm run verify         # lint + typecheck + coverage + build
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Structure
 
-## Learn More
+- `src/lib/outfitGenerator.ts` – pure recommendation engine (swappable)
+- `src/lib/outfitReducer.ts` – pure UI state machine
+- `src/data/products.ts` – mock catalogue (integrity enforced by `products.test.ts`)
+- `src/components/` – UI
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+See `docs/adidas-outfit-creator-mvp-spec.md` and `docs/DEVELOPMENT-TDD-GUIDE.md`.
