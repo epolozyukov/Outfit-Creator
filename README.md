@@ -1,4 +1,4 @@
-# Outfit Creator (workshop concept)
+# Outfit Creator 
 
 Pick an activity, weather and style and get a complete sportswear outfit from a
 local mock catalogue. Replace single items, generate another look, see the total.
