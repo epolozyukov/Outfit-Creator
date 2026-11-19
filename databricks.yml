@@ -1,0 +1,16 @@
+# Optional: deploy with Databricks Asset Bundles
+#   databricks bundle deploy -t dev && databricks bundle run outfit_creator -t dev
+bundle:
+  name: adidas-outfit-creator
+
+resources:
+  apps:
+    outfit_creator:
+      name: outfit-creator
+      description: "Outfit Creator workshop concept (Next.js)"
+      source_code_path: .
+
+targets:
+  dev:
+    default: true
+    mode: development

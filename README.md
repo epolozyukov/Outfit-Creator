@@ -13,6 +13,22 @@ npm install
 npm run dev        # http://localhost:3000
 ```
 
+## Deploy
+
+**Vercel** – import the GitHub repo; `vercel.json` pins the Next.js preset. No env vars.
+
+**Databricks Apps** – the app runs as a Node server via `app.yaml`
+(`npm run start:databricks`, which binds `0.0.0.0` on `DATABRICKS_APP_PORT`).
+
+```bash
+databricks apps create outfit-creator
+databricks sync . /Workspace/Users/<you>/outfit-creator --exclude node_modules --exclude .next
+databricks apps deploy outfit-creator --source-code-path /Workspace/Users/<you>/outfit-creator
+# or: databricks bundle deploy -t dev && databricks bundle run outfit_creator -t dev
+```
+
+Test the Databricks start locally: `npm run build && DATABRICKS_APP_PORT=8000 npm run start:databricks`.
+
 ## Quality gates
 
 ```bash

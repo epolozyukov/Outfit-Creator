@@ -1,0 +1,8 @@
+# Databricks Apps runtime config.
+# Databricks runs `npm install` and `npm run build` automatically, then this command.
+command: ["npm", "run", "start:databricks"]
+env:
+  - name: NODE_ENV
+    value: "production"
+  - name: NEXT_TELEMETRY_DISABLED
+    value: "1"
